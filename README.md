@@ -68,8 +68,8 @@
 <ul>
 	<li>Обов’язково підключи файл <code>ua.php</code> за допомогою <code>include</code> або <code>require</code> <strong>до використання констант</strong>.</li>
 	<li>Використовуй назви констант точно так, як вони задані: <code>WELCOME</code>, <code>site_status</code>, тощо.</li>
-	<li>Для виводу тексту у HTML краще застосовувати <code>htmlspecialchars()</code>, якщо дані можуть містити лапки, наприклад:<br>
-	<code>&lt;?=htmlspecialchars(WELCOME)?&gt;</code></li>
+	<li>Для виводу тексту у HTML краще застосовувати <code>htmlspecialchars()</code>, якщо дані можуть містити лапки, наприклад:</li><br>
+	<pre><code>&lt;?=htmlspecialchars(WELCOME)?&gt;</code></pre>
 </ul>
 
 <p>
