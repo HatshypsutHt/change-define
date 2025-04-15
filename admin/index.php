@@ -1,25 +1,25 @@
 <?php
-	$admin_pass = '112233'; // Пароль для входу
+	$admin_pass = '123456'; // Пароль для входу
 	$file_path = './language/ua.php'; // Щлях до мовного файла
 	$backup_path = $file_path . '.bak';
 	
 	session_start();
 	
-	// 🔐 Вхід
+	// Вхід
 	if (isset($_POST['password']) && $_POST['password'] === $admin_pass) {
 		$_SESSION['admin_logged_in'] = true;
 		header("Location: index.php");
 		exit;
 	}
 	
-	// 🚪 Вихід
+	// Вихід
 	if (isset($_GET['logout'])) {
 		session_destroy();
 		header("Location: index.php");
 		exit;
 	}
 	
-	// 🆕 Створення стартового мовного файлу
+	// Створення мовного файлу
 	if (isset($_GET['create']) && $_GET['create'] === '1') {
 		if (!is_dir('./language')) {
 			mkdir('./language', 0755, true);
@@ -33,7 +33,7 @@
 		exit;
 	}
 	
-	// 🔄 Відновлення з копії
+	// Відновлення мовного файлу з копії
 	if (isset($_GET['restore']) && $_GET['restore'] === '1') {
 		if (file_exists($backup_path)) {
 			copy($backup_path, $file_path);
@@ -45,7 +45,6 @@
 		}
 	}
 	
-	// 🔐 Якщо ще не увійшли
 	if (!isset($_SESSION['admin_logged_in'])):
 ?>
 <!DOCTYPE html>
@@ -120,7 +119,6 @@ document.getElementById('btn-faq').addEventListener('click', function(e) {
 		$defines[$match[1]] = $match[2];
 	}
 
-	// 💾 Збереження
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$new_defines = $_POST['defines'] ?? [];
 		copy($file_path, $backup_path);
